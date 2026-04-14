@@ -159,9 +159,13 @@ def main():
         print("无法加载数据，退出")
         return
     
+    last_period = df['period'].iloc[-1]
+    next_period = last_period + 1
+    
     print(f"\n数据概况:")
-    print(f"  2026年数据: {len(df)} 条 (2026001 - {df['period'].max()})")
-    print(f"  最后一期: {df['period'].iloc[-1]} - {ZODIAC_CONFIG['id_to_name'][df['zodiac'].iloc[-1]]}")
+    print(f"  2026年数据: {len(df)} 条 (2026001 - {last_period})")
+    print(f"  最后一期: {last_period} - {ZODIAC_CONFIG['id_to_name'][df['zodiac'].iloc[-1]]}")
+    print(f"\n🔮 预测目标: {next_period}期")
     
     # 定义所有模型
     models_config = [
